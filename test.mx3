@@ -1,0 +1,21 @@
+Nx:=2
+Ny:=4
+Nz:=8
+setGridSize(Nx, Ny, Nz)
+setCellSize(1e-9, 1e-9, 1e-9)
+
+
+m = uniform(0, 0, 1)
+
+for x:=0; x<Nx; x+=1{
+    for y:=0; y<Ny; y+=1{
+        for z:=0; z<Nz; z+=1{
+             m.setCell(x,y,z, vector(1, -1, 0.1*x+ 0.01*y + 0.001*z))
+        }
+    }
+}
+
+mz := m.Comp(2)
+
+saveAs(mz, "mz_test_data.ovf")
+saveAs(m, "test_data.ovf")
